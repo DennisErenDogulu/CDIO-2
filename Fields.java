@@ -2,6 +2,8 @@ public class Fields {
 
     public int getFields(int rollResult) {
 
+        
+
         switch (rollResult) {
             case 2: 
             System.out.println("You found a treasure box at the top of the Tower! You get 250. Damn you're lucky");
