@@ -1,6 +1,7 @@
 public class Player {
     private String name;
     private Account account;
+    int balance;
 
     public Player(String name) {
         this.name = name;
@@ -15,4 +16,7 @@ public class Player {
         return account;
     }
     
+    public int getBalance() {
+        return balance;
+    }
 }
