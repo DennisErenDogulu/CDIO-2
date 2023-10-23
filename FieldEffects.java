@@ -1,7 +1,7 @@
 public class FieldEffects {
     
     public static int getEffect(int rollResult) {
-        int amount;
+       public int amount;
         switch (rollResult) {
             case 2:
                 amount = 250;
@@ -26,6 +26,7 @@ public class FieldEffects {
             case 12:
                 amount = 650;
         }
+        return rollResult;
     }
 }
 
