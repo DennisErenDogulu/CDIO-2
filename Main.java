@@ -4,7 +4,7 @@ public class Main{
 public static void main (String args[]){
     final Player player1 = new Player();
     final Player player2 = new Player();
-    Dievalues roll = new Dievalues();
+    Dicevalues roll = new Dicevalues();
 
 Scanner scanner = new Scanner(System.in);
 System.out.println("Hello, and welcome to the dice game. If you are ready to play the dicegame then please write Yes in the terminal");
@@ -21,8 +21,9 @@ while(player1.getBalance() < 3000 && player2.getBalance() < 3000) {
     break;
 }
 
-System.out.println("________________");
-System.out.println("Player 2's turn");
+    System.out.println("________________");
+    System.out.println("Player 2's turn");
+
 playTurn(player2, roll);
 if(player2.getBalance() >= 3000){
     System.out.println("Player 2 ended with: " + player2.getBalance() +" Congratulations! You're mad rich now");
@@ -33,6 +34,17 @@ if(player2.getBalance() >= 3000){
 }
 scanner.close();
 
-public static void playTurn(Player player, )
+public static void playTurn(Player player , Dicevalues roll){
+    roll.Dicevalues();
+    System.out.println(toStringValueOfDies());
+    
+    
+if(rollResult() == 10){
 
-}}
+
+}
+
+
+
+
+}}}

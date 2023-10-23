@@ -4,13 +4,13 @@ public class Dicevalues {
     public int sum;
 
     public int Dievalue() {
-        Dice_1 = new Die().roll();
-        Dice_2 = new Die().roll();
+        Dice_1 = new Dice().roll();
+        Dice_2 = new Dice().roll();
 
         return Dice_1 + Dice_2;
     }
 
-    public int sumFace() {
+    public int rollResult() {
         sum = Dice_1 + Dice_2;
         return sum;
     }

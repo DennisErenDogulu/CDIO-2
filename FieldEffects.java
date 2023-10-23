@@ -1,30 +1,30 @@
 public class FieldEffects {
     
     public static int getEffect(int rollResult) {
-        
+        int amount;
         switch (rollResult) {
             case 2:
-                return 250;
+                amount = 250;
             case 3:
-                return -100;
+                amount= -100;
             case 4:
-                return 100;
+                amount = 100;
             case 5:
-                return -20;
+                amount = -20;
             case 6:
-                return 180;
+                amount = 180;
             case 7:
-                return 0;
+                amount = 0;
             case 8:
-                return -70;
+                amount = -70;
             case 9:
-                return 60;
+                amount = 60;
             case 10:
-                return -80; 
+                amount = -80; 
             case 11:
-                return -50;
+                amount = -50;
             case 12:
-                return 650;
+                amount = 650;
         }
     }
 }
