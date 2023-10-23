@@ -1,10 +1,10 @@
-import java.util.random;
+import java.util.Random;
 
-Public class Die{
+public class Dice {
     public int faceValue;
-    public Random random = new random();
+    public Random random = new Random();
 
-    public Die(){
+    public Dice(){
 
     }
 
