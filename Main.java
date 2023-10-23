@@ -34,17 +34,19 @@ public class Main {
         }
     }
 
-    public static void playTurn(Player player, Dicevalues roll) {
+    public static void playTurn(Player player, Dicevalues roll, Fields fields) {
         int rollResult = roll.rollDice();
         int currentBalance = player.getBalance();
         player.setBalance(currentBalance + rollResult);
         System.out.println(player.getName() + " rolled a " + rollResult);
+        fields.getFields(rollResult);
     }
 
     public static void main(String args[]) {
         Player player1 = new Player("Player1", 1000);
         Player player2 = new Player("Player2", 1000);
         Dicevalues roll = new Dicevalues();
+        Fields fields = new Fields();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, and welcome to the dice game. If you are ready to play the dice game then please write Yes in the terminal");
@@ -56,12 +58,12 @@ public class Main {
                 // Player 1's turn
                 System.out.println("________________");
                 System.out.println("Player 1's turn");
-                playTurn(player1, roll);
+                playTurn(player1, roll, fields);
 
                 // Player 2's turn
                 System.out.println("________________");
                 System.out.println("Player 2's turn");
-                playTurn(player2, roll);
+                playTurn(player2, roll, fields);
             }
 
             if (player1.getBalance() >= 3000) {
