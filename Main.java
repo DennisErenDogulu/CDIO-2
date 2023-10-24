@@ -19,11 +19,15 @@ public class Main {
                 System.out.println("________________");
                 System.out.println("Player 1's turn");
                 playTurn(player1, roll, fields, fieldEffects);
+                System.out.println("Press Enter to continue to player 2's turn");
+                scanner.nextLine(); // Wait for Enter
 
                 // Player 2's turn
                 System.out.println("________________");
                 System.out.println("Player 2's turn");
                 playTurn(player2, roll, fields, fieldEffects);
+                System.out.println("Press Enter to continue to player 1's turn");
+                scanner.nextLine(); // Wait for Enter
             }
 
             if (player1.getBalance() >= 3000) {
@@ -48,7 +52,7 @@ public class Main {
         player.setBalance(newBalance);
         System.out.println(player.getName() + " rolled a " + rollResult);
         int specialFieldResult = fields.getFields(rollResult);
-        System.out.println("The player's new balance is " + player.getBalance());
+        System.out.println("Your new total in the bank is  " + player.getBalance());
 
         // Check if the player landed on "The Werewall" (roll result is 10)
         if (rollResult == 10) {
@@ -57,8 +61,7 @@ public class Main {
             player.setBalance(player.getBalance() + extraEffectAmount);
             System.out.println(player.getName() + " rolled a " + extraRollResult + " in the extra turn.");
             fields.getFields(extraRollResult);
-            System.out.println("The player's new balance is " + player.getBalance());
+            System.out.println("Your new total in the bank is  " + player.getBalance());
         }
     }
 }
-
