@@ -2,6 +2,7 @@ public class FieldEffects {
 
     public int getEffect(int rollResult) {
         int amount;
+        
         switch (rollResult) {
             case 2:
                 amount = 250;
@@ -37,9 +38,12 @@ public class FieldEffects {
                 amount = 650;
                 break;
             default:
-                amount = 0; // or any other default value or action
+                amount = 0; 
                 break;
         }
         return amount;
     }
 }
+
+// The case number indicated the dice values. If you wan't to use a different type of die than a six sided you would need to change the value between case & : 
+// If the player rolls outside the case values the player gets 0 and the game continues.
