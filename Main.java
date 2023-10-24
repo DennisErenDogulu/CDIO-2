@@ -13,7 +13,7 @@ public class Main {
 
         String answer = scanner.nextLine();
 
-        if (answer.equals("Yes")) {
+        if (answer.equalsIgnoreCase("Yes")) {
             while (player1.getBalance() < 3000 && player2.getBalance() < 3000) {
                 // Player 1's turn
                 System.out.println("________________");
