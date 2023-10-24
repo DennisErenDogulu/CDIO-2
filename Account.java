@@ -5,20 +5,28 @@ public class Account {
         this.balance = balance;
     }
 
-    public boolean deposit(int amount) {
-        if (amount >= 0) {
+    public int deposit(int amount) {
             balance += amount;
-            return true;
-        }
-        return false;
-    }
 
-    public boolean withdraw(int amount) {
-        if (amount >= 0 && balance >= amount) {
-            balance -= amount;
-            return true;
+            if(balance<0) { // Check if balance is negative, in that case set balance to 0.
+              balance = 0;
+              return balance;
+            }
+            else // if balance not negative return new balance
+            return balance;
+
+            
         }
-        return false;
+        
+
+    public int withdraw(int amount) {
+        if (amount > balance ) {
+            System.out.println("You don't have the facilities for that big man"); // if you don't have the money to buy something.
+        }else{
+            balance -= amount; // if you do have the money to buy that thing
+
+            }
+        return balance;
     }
 
     public String toStringBankrupt(){
