@@ -1,24 +1,11 @@
-public class Dicevalues {
-    public int Dice_1;
-    public int Dice_2;
-    public int sum;
-
-    public int Dievalue() {
-        Dice_1 = new Dice().roll();
-        Dice_2 = new Dice().roll();
-
-        return Dice_1 + Dice_2;
+    import java.util.Random;
+    
+    public class Dicevalues {
+        public int rollDice() {
+            Random random = new Random();
+            int dice1 = random.nextInt(6) + 1;
+            int dice2 = random.nextInt(6) + 1;
+            int sum = dice1 + dice2;
+            return sum;
+        }
     }
-
-    public int rollResult() {
-        sum = Dice_1 + Dice_2;
-        return sum;
-    }
-
-    public int getSum() {
-        return sum;
-    }
-
-    public String toStringValueOfDies() {
-        return "First roll is " + Dice_1 + " Second roll is " + Dice_2;
-    }}

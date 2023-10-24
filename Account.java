@@ -14,11 +14,12 @@ public class Account {
             return balance;   
     }
 
-    /*public boolean withdraw(int amount) {
+    public boolean withdraw(int amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
-            return true; // Transaction successful
+            return true; 
         }
-        return false; // Invalid amount or insufficient balance*/
+        return false; 
     }
+}
 
