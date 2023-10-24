@@ -39,8 +39,18 @@ public class Main {
         int currentBalance = player.getBalance();
         player.setBalance(currentBalance + rollResult);
         System.out.println(player.getName() + " rolled a " + rollResult);
-        fields.getFields(rollResult);
+    
+        int specialFieldResult = fields.getFields(rollResult);
+    
+        // Check if the player landed on "The Werewall" (roll result is 10)
+        if (specialFieldResult == 10) {
+            int extraRollResult = roll.rollDice();
+            player.setBalance(player.getBalance() + extraRollResult);
+            System.out.println(player.getName() + " rolled a " + extraRollResult + " in the extra turn.");
+            fields.getFields(extraRollResult); // Show the result for the extra turn.
+        }
     }
+    
 
     public static void main(String args[]) {
         Player player1 = new Player("Player1", 1000);
@@ -68,7 +78,7 @@ public class Main {
 
             if (player1.getBalance() >= 3000) {
                 System.out.println("Player 1 ended with: " + player1.getBalance() + " Congratulations! You're rich now.");
-            }
+            } 
 
             if (player2.getBalance() >= 3000) {
                 System.out.println("Player 2 ended with: " + player2.getBalance() + " Congratulations! You're rich now.");
@@ -76,6 +86,8 @@ public class Main {
         } else {
             System.out.println("I don't understand, you don't want to play the game?");
         }
+
+
 
         scanner.close();
     }
