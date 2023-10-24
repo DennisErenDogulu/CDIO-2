@@ -53,8 +53,8 @@ public class Main {
     
 
     public static void main(String args[]) {
-        Player player1 = new Player("Player1", 1000);
-        Player player2 = new Player("Player2", 1000);
+        Player player1 = new Player("Player 1", 1000);
+        Player player2 = new Player("Player 2", 1000);
         Dicevalues roll = new Dicevalues();
         Fields fields = new Fields();
 
