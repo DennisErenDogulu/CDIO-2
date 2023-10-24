@@ -9,19 +9,16 @@ public class Account {
         return balance;
     }
 
-    public boolean deposit(int amount) {
-        if (amount > 0) {
+    public int deposit(int amount) {
             balance += amount;
-            return true; // Transaction successful
-        }
-        return false; // Invalid amount
+            return balance;   
     }
 
-    public boolean withdraw(int amount) {
+    /*public boolean withdraw(int amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
             return true; // Transaction successful
         }
-        return false; // Invalid amount or insufficient balance
+        return false; // Invalid amount or insufficient balance*/
     }
-}
+

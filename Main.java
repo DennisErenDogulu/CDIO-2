@@ -39,13 +39,13 @@ public static void main(String args[]) {
 
         scanner.close();
     }
-public static void playTurn(Player player, Dicevalues roll, Fields fields) {
+    public static void playTurn(Player player, Dicevalues roll, Fields fields) {
         int rollResult = roll.Dievalue();
         int currentBalance = player.getBalance();
         player.setBalance(currentBalance + rollResult);
         System.out.println(player.getName() + " rolled a " + rollResult);
-    
         int specialFieldResult = fields.getFields(rollResult);
+        System.out.println("The players new balance is " + currentBalance);
     
         // Check if the player landed on "The Werewall" (roll result is 10)
         if (specialFieldResult == 10) {
@@ -53,6 +53,7 @@ public static void playTurn(Player player, Dicevalues roll, Fields fields) {
             player.setBalance(player.getBalance() + extraRollResult);
             System.out.println(player.getName() + " rolled a " + extraRollResult + " in the extra turn.");
             fields.getFields(extraRollResult); // Show the result for the extra turn.
+            System.out.println("The players new balance is " + currentBalance);
         }
     }
 }
