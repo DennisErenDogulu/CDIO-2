@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        final Player player1 = new Player("Player 1");
-        final Player player2 = new Player("Player 2");
+        final Player player1 = new Player("Player 1", 1000);
+        final Player player2 = new Player("Player 2", 1000);
         Dicevalues roll = new Dicevalues();
         FieldEffects fieldEffects = new FieldEffects(); // Instantiate the FieldEffects class
 
@@ -41,9 +41,12 @@ public class Main {
     }
 
     public static void playTurn(Player player, Dicevalues roll, FieldEffects fieldEffects) {
-        roll.rollDice(); // Assuming this method rolls the dice and updates the value
-        int rollResult = roll.getValue();
-
+        roll.Dievalue(); // Assuming this method rolls the dice and updates the value
+        System.out.println(roll.toStringValueOfDies());
+        int rollResult = roll.getSum();
+        if (rollResult == 10){
+            int amount = fieldEffects.getEffect(rollResult);
+        }
         int amount = fieldEffects.getEffect(rollResult); // Use the FieldEffects class to determine the effect
         player.deposit(amount);
         System.out.println("You have " + player.getBalance());
