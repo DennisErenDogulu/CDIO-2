@@ -18,8 +18,5 @@ public class Player {
         public void setBalance(int newBalance) {
             balance = newBalance;
         }
-
-        public void deposit(int amount) {
-        }
     }
 
