@@ -35,9 +35,11 @@ public class Fields {
             break;
             case 12:
             System.out.println("You found a Goldmine in the mountains! You got 650, now you have mad bank!");
+            break;
 
             default:
             System.out.println("An error happened. Roll again");
+            break;
 
         }
     return rollResult;
