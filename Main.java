@@ -7,11 +7,15 @@ public class Main {
         Dicevalues roll = new Dicevalues();
         FieldEffects fieldEffects = new FieldEffects();
         Fields fields = new Fields();
-
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Hello, and welcome to the dice game. If you are ready to play the dice game, please write Yes in the terminal");
 
-        String answer = scanner.nextLine();
+        System.out.println("Enter the number of sides for the dice: ");
+        int sides = scanner.nextInt();
+        Dice dice = new Dice(sides);
+        
+        scanner.nextLine();
+        System.out.println("Hello, and welcome to the dice game. If you are ready to play the dice game, please write Yes in the terminal");
+       String answer = scanner.nextLine();
 
         if (answer.equalsIgnoreCase("Yes")) {
             while (player1.getBalance() < 3000 && player2.getBalance() < 3000) {
