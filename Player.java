@@ -1,22 +1,19 @@
 public class Player {
-        private String name;
-        private int balance;
+    private String name;
+    private Account account;
 
-        public Player(String name, int initialBalance) {
-            this.name = name;
-            this.balance = initialBalance;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getBalance() {
-            return balance;
-        }
-
-        public void setBalance(int newBalance) {
-            balance = newBalance;
-        }
+    public Player(String name, int initialBalance) {
+        this.name = name;
+        this.account = new Account(initialBalance);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+}
+
 

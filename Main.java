@@ -12,13 +12,13 @@ public class Main {
         System.out.println("Enter the number of sides for the dice: ");
         int sides = scanner.nextInt();
         Dice dice = new Dice(sides);
-        
+
         scanner.nextLine();
         System.out.println("Hello, and welcome to the dice game. If you are ready to play the dice game, please write Yes in the terminal");
-       String answer = scanner.nextLine();
+        String answer = scanner.nextLine();
 
         if (answer.equalsIgnoreCase("Yes")) {
-            while (player1.getBalance() < 3000 && player2.getBalance() < 3000) {
+            while (player1.getAccount().getBalance() < 3000 && player2.getAccount().getBalance() < 3000) {
                 // Player 1's turn
                 System.out.println("________________");
                 System.out.println("Player 1's turn");
@@ -34,12 +34,12 @@ public class Main {
                 scanner.nextLine(); // Wait for Enter
             }
 
-            if (player1.getBalance() >= 3000) {
-                System.out.println("Player 1 ended with: " + player1.getBalance() + " Congratulations! You're rich now.");
+            if (player1.getAccount().getBalance() >= 3000) {
+                System.out.println("Player 1 ended with: " + player1.getAccount().getBalance() + " Congratulations! You're rich now.");
             }
 
-            if (player2.getBalance() >= 3000) {
-                System.out.println("Player 2 ended with: " + player2.getBalance() + " Congratulations! You're rich now.");
+            if (player2.getAccount().getBalance() >= 3000) {
+                System.out.println("Player 2 ended with: " + player2.getAccount().getBalance() + " Congratulations! You're rich now.");
             }
         } else {
             System.out.println("I don't understand, you don't want to play the game?");
@@ -50,22 +50,11 @@ public class Main {
 
     public static void playTurn(Player player, Dicevalues roll, Fields fields, FieldEffects fieldEffects) {
         int rollResult = roll.rollDice();
-        int currentBalance = player.getBalance();
         int effectAmount = fieldEffects.getEffect(rollResult);
-        int newBalance = currentBalance + effectAmount;
-        player.setBalance(newBalance);
         System.out.println(player.getName() + " rolled a " + rollResult);
+        
         int specialFieldResult = fields.getFields(rollResult);
-        System.out.println("Your new total in the bank is  " + player.getBalance());
-
-        // Check if the player landed on "The Werewall" (roll result is 10)
-        if (rollResult == 10) {
-            int extraRollResult = roll.rollDice();
-            int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
-            player.setBalance(player.getBalance() + extraEffectAmount);
-            System.out.println(player.getName() + " rolled a " + extraRollResult + " in the extra turn.");
-            fields.getFields(extraRollResult);
-            System.out.println("Your new total in the bank is  " + player.getBalance());
-        }
+        player.getAccount().updateBalance(rollResult, effectAmount, specialFieldResult);
+        System.out.println("Your new total in the bank is " + player.getAccount().getBalance());
     }
 }
