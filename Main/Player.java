@@ -1,3 +1,5 @@
+package Main;
+
 public class Player {
     private String name;
     private Account account;
@@ -15,5 +17,3 @@ public class Player {
         return account;
     }
 }
-
-

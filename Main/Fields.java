@@ -1,3 +1,4 @@
+package Main;
 public class Fields {
     
     public int getFields(int rollResult) {

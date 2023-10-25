@@ -1,3 +1,4 @@
+package Main;
 public class FieldEffects {
     private int amount;
 

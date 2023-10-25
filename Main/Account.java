@@ -1,4 +1,6 @@
-public class Account {
+package Main;
+
+    public class Account {
     private int balance;
     Dicevalues roll = new Dicevalues();
     FieldEffects fieldEffects = new FieldEffects();
@@ -11,7 +13,7 @@ public class Account {
         return balance;
     }
 
-    public void updateBalance(int rollResult, int effectAmount, int specialFieldResult) {
+    public void deposit(int rollResult, int effectAmount, int specialFieldResult) {
         int newBalance = balance + effectAmount;
         if (rollResult == 10) {
             int extraRollResult = roll.rollDice();
@@ -20,6 +22,14 @@ public class Account {
         }
         balance = newBalance;
     }
+
+    public void withdraw(int rollResult, int effectAmount, int specialFieldResult) {
+        int newBalance = balance - effectAmount;
+        if (rollResult == 10) {
+            int extraRollResult = roll.rollDice();
+            int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
+            newBalance += extraEffectAmount;
+        }
+        balance = newBalance;
+    }
 }
-
-
