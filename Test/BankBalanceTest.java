@@ -1,6 +1,9 @@
-package Main;
+package Test;
 
 import org.junit.Test;
+
+import Main.Account;
+
 import static org.junit.Assert.*;
 
 public class BankBalanceTest {

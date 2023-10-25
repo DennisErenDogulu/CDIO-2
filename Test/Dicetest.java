@@ -1,4 +1,6 @@
-package Main;
+package Test;
+
+import Main.Dicevalues;
 
 public class Dicetest {
     public static void main(String[] args) {
