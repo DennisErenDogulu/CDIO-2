@@ -72,7 +72,7 @@ public class Main {
                 System.out.println(player.getName() + " rolled a " + extraRollResult + " in the extra turn.");
                 int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
                 fields.getFields(extraRollResult); 
-                player.getAccount().deposit(rollResult, effectAmount, specialFieldResult);
+                player.getAccount().deposit(extraRollResult, extraEffectAmount, specialFieldResult);
                 System.out.println("Your new total in the bank is " + player.getAccount().getBalance());
         }
     }
