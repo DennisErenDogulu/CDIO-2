@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Initialize players, dice, and game elements
         Player player1 = new Player("Player 1", 1000);
         Player player2 = new Player("Player 2", 1000);
         Dicevalues roll = new Dicevalues();
@@ -9,12 +10,15 @@ public class Main {
         Fields fields = new Fields();
         Scanner scanner = new Scanner(System.in);
 
+        // Get the number of sides for the dice
         System.out.println("Enter the number of sides for the dice: ");
         int sides = scanner.nextInt();
         Dice dice = new Dice(sides);
 
-        scanner.nextLine();
-        System.out.println("Hello, and welcome to the dice game. If you are ready to play the dice game, please write Yes in the terminal");
+        scanner.nextLine(); // Consume newline
+
+        // Welcome message and game start confirmation
+        System.out.println("Hello, and welcome to the dice game. If you are ready to play the dice game, please write 'Yes' in the terminal");
         String answer = scanner.nextLine();
 
         if (answer.equalsIgnoreCase("Yes")) {
@@ -52,9 +56,20 @@ public class Main {
         int rollResult = roll.rollDice();
         int effectAmount = fieldEffects.getEffect(rollResult);
         System.out.println(player.getName() + " rolled a " + rollResult);
-        
+
         int specialFieldResult = fields.getFields(rollResult);
         player.getAccount().updateBalance(rollResult, effectAmount, specialFieldResult);
         System.out.println("Your new total in the bank is " + player.getAccount().getBalance());
+
+        if (specialFieldResult == 10) {
+                int extraRollResult = roll.rollDice();
+                System.out.println(player.getName() + " rolled a " + extraRollResult + " in the extra turn.");
+                int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
+                fields.getFields(extraRollResult); 
+                player.getAccount().updateBalance(extraRollResult, extraEffectAmount, specialFieldResult);
+                System.out.println("Your new total in the bank is " + player.getAccount().getBalance());
+        }
     }
-}
+    }
+
+
