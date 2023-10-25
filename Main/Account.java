@@ -24,12 +24,17 @@ package Main;
     }
 
     public void withdraw(int rollResult, int effectAmount, int specialFieldResult) {
-        int newBalance = balance - effectAmount;
+        int newBalance = balance;
         if (rollResult == 10) {
             int extraRollResult = roll.rollDice();
             int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
             newBalance += extraEffectAmount;
         }
-        balance = newBalance;
+        newBalance -= effectAmount;
+        balance = Math.max(0, newBalance);
     }
-}
+    
+    }
+    
+    
+
