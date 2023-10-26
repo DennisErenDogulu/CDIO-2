@@ -15,11 +15,6 @@ package Main;
 
     public void deposit(int rollResult, int effectAmount, int specialFieldResult) {
         int newBalance = balance + effectAmount;
-        if (rollResult == 10) {
-            int extraRollResult = roll.rollDice();
-            int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
-            newBalance += extraEffectAmount;
-        }
         balance = newBalance;
     }
 
