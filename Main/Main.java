@@ -5,28 +5,30 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ResourceBundle messages = null; // Initialize messages to work in scope for entire main method
+        ResourceBundle messages = null; // Initialize messages to work in the scope of the entire main method
 
         // Initialize players, dice, and game elements
         Player player1 = new Player("Player 1", 1000);
         Player player2 = new Player("Player 2", 1000);
         Dicevalues roll = new Dicevalues();
+        Fields fields; // Declare fields, will be initialized based on language choice
         FieldEffects fieldEffects = new FieldEffects();
-        Fields fields = new Fields();
         Scanner scanner = new Scanner(System.in);
 
         // Initialize which language the game should be played
         System.out.println("Choose a language:");
         System.out.println("1. English");
         System.out.println("2. Danish");
-        System.out.print("Enter 2 for English or 1 for Danish: ");
+        System.out.print("Enter 1 for English or 2 for Danish: ");
 
         int choice = scanner.nextInt();
-        
+
         if (choice == 1) {
-            messages = ResourceBundle.getBundle("messages_da_DK");
-        } else if (choice == 2) {
             messages = ResourceBundle.getBundle("messages_en_US");
+            fields = new Fields(messages);
+        } else if (choice == 2) {
+            messages = ResourceBundle.getBundle("messages_da_DK");
+            fields = new Fields(messages);
         } else {
             System.out.println("Invalid language choice.");
             return;
