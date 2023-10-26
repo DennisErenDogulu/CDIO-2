@@ -63,7 +63,7 @@ public class Main {
 
             // Checks if one of the players has 3000 points and prints out a winning message
             if (player1.getAccount().getBalance() >= 3000) {
-                System.out.println(messages.getString("playEndPlayer1") + " " + player2.getAccount().getBalance() + " " + messages.getString("congrats"));
+                System.out.println(messages.getString("playEndPlayer1") + " " + player1.getAccount().getBalance() + " " + messages.getString("congrats"));
             }
 
             if (player2.getAccount().getBalance() >= 3000) {
