@@ -39,7 +39,7 @@ public class Fields {
                 System.out.println(messages.getString("hutsInMountain"));
                 break;
             case 10:
-                System.out.println(messages.getString("werewall"));
+                System.out.println(messages.getString("wereWall"));
                 break; 
             case 11: 
                 System.out.println(messages.getString("thePit"));
