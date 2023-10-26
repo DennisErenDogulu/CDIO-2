@@ -44,33 +44,36 @@ public class Main {
         String answer = scanner.nextLine();
 
         if (answer.equalsIgnoreCase(messages.getString("answerToLang"))) {
+           
+           
+            
             // This loop will run until there is one player with 3000 points
-            while (player1.getAccount().getBalance() <= 3000 && player2.getAccount().getBalance() <= 3000) {
+
+            while (true) {
                 // Player 1's turn
                 System.out.println("______________");
                 System.out.println(messages.getString("player1Turn"));
                 playTurn(player1, roll, fields, fieldEffects, messages);
                 System.out.println(messages.getString("continuePlayer1"));
                 scanner.nextLine(); // Wait for Enter
-
+            
+                if (player1.getAccount().getBalance() >= 3000) {
+                    System.out.println(messages.getString("playEndPlayer1") + " " + player1.getAccount().getBalance() + " " + messages.getString("congrats"));
+                    break; // Exit the loop
+                }
+            
                 // Player 2's turn
                 System.out.println("______________");
                 System.out.println(messages.getString("player2Turn"));
                 playTurn(player2, roll, fields, fieldEffects, messages);
                 System.out.println(messages.getString("continuePlayer2"));
                 scanner.nextLine(); // Wait for Enter
+            
+                if (player2.getAccount().getBalance() >= 3000) {
+                    System.out.println(messages.getString("playEndPlayer2") + " " + player2.getAccount().getBalance() + " " + messages.getString("congrats"));
+                    break; // Exit the loop
+                }
             }
-
-            // Checks if one of the players has 3000 points and prints out a winning message
-            if (player1.getAccount().getBalance() >= 3000) {
-                System.out.println(messages.getString("playEndPlayer1") + " " + player1.getAccount().getBalance() + " " + messages.getString("congrats"));
-            }
-
-            if (player2.getAccount().getBalance() >= 3000) {
-                System.out.println(messages.getString("playEndPlayer2") + " " + player2.getAccount().getBalance() + " " + messages.getString("congrats"));
-            }
-        } else {
-            System.out.println(messages.getString("noPlay"));
         }
 
         scanner.close();
