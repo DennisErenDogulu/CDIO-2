@@ -1,50 +1,57 @@
 package Main;
+
+import java.util.ResourceBundle;
+import java.util.Locale;
+
 public class Fields {
-    
+    private ResourceBundle messages;
+
+    public Fields() {
+        // Default to English in case of no choice provided
+        messages = ResourceBundle.getBundle("messages", new Locale("en", "US"));
+        messages = ResourceBundle.getBundle("messages", new Locale("da", "DK"));
+    }
+
     public int getFields(int rollResult) {
-
-        switch (rollResult) {
+        switch (rollResult)  {
             case 2: 
-            System.out.println("You found a treasure box at the top of the Tower! You get 250. Damn you're lucky");
-            break;
+                System.out.println(messages.getString("tower"));
+                break;
             case 3: 
-            System.out.println("You stumbled in the wrong bar! You have to pay the big boss Crater the 100 you owe");
-            break;
+                System.out.println(messages.getString("crater"));
+                break;
             case 4: 
-            System.out.println("You made it to the Palace Gates! Your W rizz with the security got you 100!");
-            break;
+                System.out.println(messages.getString("palaceGates"));
+                break;
             case 5:
-            System.out.println("You fell and dropped a 20 in the Cold Dessert sand. RIP bro");
-            break;
+                System.out.println(messages.getString("coldDessert"));
+                break;
             case 6: 
-            System.out.println("You won 180 at Walled City Casino! Lets gooo");
-            break; 
+                System.out.println(messages.getString("walledCity"));
+                break; 
             case 7:
-            System.out.println("You're in a Monestary. Time to take a breather, GOD DID");
-            break;
+                System.out.println(messages.getString("monastery"));
+                break;
             case 8: 
-            System.out.println("You're in the club Black Cave and lost 70 in a bet. DAMN!");
-            break;
+                System.out.println(messages.getString("blackCave"));
+                break;
             case 9: 
-            System.out.println("You found 60 old drug money hidden under the mattress in Huts in Mountain!");
-            break;
+                System.out.println(messages.getString("hutsInMountain"));
+                break;
             case 10:
-            System.out.println("You lost 80 trying to climb over The Werewall! But hurry the border control is looking away! You're getting another turn");
-            break; 
+                System.out.println(messages.getString("werewall"));
+                break; 
             case 11: 
-            System.out.println("You fell in The Pit and lost 50!");
-            break;
+                System.out.println(messages.getString("thePit"));
+                break;
             case 12:
-            System.out.println("You found a Goldmine in the mountains! You got 650, now you have mad bank!");
-            break;
-
+                System.out.println(messages.getString("goldmine"));
+                break;
             default:
-            System.out.println("An error happened. Roll again");
-            break;
-
+                System.out.println(messages.getString("defaultMessage"));
+                break;
         }
-    return rollResult;
-
-
+        return rollResult;
     }
 }
+

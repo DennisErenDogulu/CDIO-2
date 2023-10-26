@@ -1,9 +1,12 @@
 package Main;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        ResourceBundle messages = null; // Initialize messages to work in scopw
+
         // Initialize players, dice, and game elements
         Player player1 = new Player("Player 1", 1000);
         Player player2 = new Player("Player 2", 1000);
@@ -12,6 +15,14 @@ public class Main {
         Fields fields = new Fields();
         Scanner scanner = new Scanner(System.in);
 
+        // Initialize which language the game should be played
+        System.out.println("Choose a language:");
+        System.out.println("1. English");
+        System.out.println("2. Danish");
+        System.out.print("Enter 2 for English or 1 for Danish: ");
+
+        int choice = scanner.nextInt();
+
         // Get the number of sides for the dice
         System.out.println("Enter the number of sides for the dice: ");
         int sides = scanner.nextInt();
@@ -19,61 +30,74 @@ public class Main {
 
         scanner.nextLine(); // Consume newline
 
+        if (choice == 1) {
+            messages = ResourceBundle.getBundle("messages_da_DK");
+        } else if (choice == 2) {
+            messages = ResourceBundle.getBundle("messages_en_US");
+        } else {
+            System.out.println("Invalid language choice.");
+            return;
+        }
+
         // Welcome message and game start confirmation
-        System.out.println("Hello, and welcome to the dice game. If you are ready to play the dice game, please write 'Yes' in the terminal");
+        System.out.println(messages.getString("welcomeMessage"));
         String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("Yes")) {
-            // This loop will run until there are one player with 3000 points
+
+        if (answer.equalsIgnoreCase(messages.getString("answerToLang"))) {
+            // This loop will run until there is one player with 3000 points
             while (player1.getAccount().getBalance() < 3000 && player2.getAccount().getBalance() < 3000) {
-                // Player 1's turn 
-                System.out.println("________________");
-                System.out.println("Player 1's turn");
-                playTurn(player1, roll, fields, fieldEffects);
-                System.out.println("Press Enter to continue to player 2's turn");
+                // Player 1's turn
+                System.out.println("______________");
+                System.out.println(messages.getString("player1Turn"));
+                playTurn(player1, roll, fields, fieldEffects, messages);
+                System.out.println(messages.getString("continuePlayer1"));
                 scanner.nextLine(); // Wait for Enter
 
                 // Player 2's turn
-                System.out.println("________________");
-                System.out.println("Player 2's turn");
-                playTurn(player2, roll, fields, fieldEffects);
-                System.out.println("Press Enter to continue to player 1's turn");
+                System.out.println("______________");
+                System.out.println(messages.getString("player2Turn"));
+                playTurn(player2, roll, fields, fieldEffects, messages);
+                System.out.println(messages.getString("continuePlayer2"));
                 scanner.nextLine(); // Wait for Enter
             }
-            // Checks if one of the players have 3000 points and if they have it prints out a winning message
+
+            // Checks if one of the players has 3000 points and prints out a winning message
             if (player1.getAccount().getBalance() >= 3000) {
-                System.out.println("Player 1 ended with: " + player1.getAccount().getBalance() + " Congratulations! You're rich now.");
+                System.out.println(messages.getString("playEndPlayer1") + " " + player2.getAccount().getBalance() + " " + messages.getString("congrats"));
             }
 
             if (player2.getAccount().getBalance() >= 3000) {
-                System.out.println("Player 2 ended with: " + player2.getAccount().getBalance() + " Congratulations! You're rich now.");
+                System.out.println(messages.getString("playEndPlayer2") + " " + player2.getAccount().getBalance() + " " + messages.getString("congrats"));
             }
         } else {
-            System.out.println("I don't understand, you don't want to play the game?");
+            System.out.println(messages.getString("noPlay"));
         }
 
         scanner.close();
     }
-    /* This method plays the turn, whitch include rolling the dices, 
-    check which field the player is on, depoist or withdraw the fieldeffect to the players balance and prints out the new
+
+    /* This method plays the turn, which includes rolling the dice,
+    check which field the player is on, deposit or withdraw the field effect to the player's balance and prints out the new
     balance of the player */
-    public static void playTurn(Player player, Dicevalues roll, Fields fields, FieldEffects fieldEffects) {
+    public static void playTurn(Player player, Dicevalues roll, Fields fields, FieldEffects fieldEffects, ResourceBundle messages) {
         int rollResult = roll.rollDice();
         int effectAmount = fieldEffects.getEffect(rollResult);
-        System.out.println(player.getName() + " rolled a " + rollResult);
+        System.out.println(player.getName() + " " + messages.getString("resultRoll") + " " + rollResult);
 
         int specialFieldResult = fields.getFields(rollResult);
         player.getAccount().deposit(rollResult, effectAmount, specialFieldResult);
-        System.out.println("Your new total in the bank is " + player.getAccount().getBalance());
- /* This method plays the extra turn if you roll 10 on the turn, whitch include rolling the dices, 
-    check which field the player is on, depoist or withdraw the fieldeffect to the players balance and prints out the new
-    balance of the player */
+        System.out.println(messages.getString("bankUpdate") + " " + player.getAccount().getBalance());
+
+        // This method plays the extra turn if you roll 10 on the turn, which includes rolling the dice,
+        // check which field the player is on, deposit or withdraw the field effect to the player's balance and prints out the new
+        // balance of the player
         if (specialFieldResult == 10) {
-                int extraRollResult = roll.rollDice();
-                System.out.println(player.getName() + " rolled a " + extraRollResult + " in the extra turn.");
-                int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
-                fields.getFields(extraRollResult); 
-                player.getAccount().deposit(extraRollResult, extraEffectAmount, specialFieldResult);
-                System.out.println("Your new total in the bank is " + player.getAccount().getBalance());
+            int extraRollResult = roll.rollDice();
+            System.out.println(player.getName() + " " + messages.getString("resultRoll") + " " + extraRollResult + " " + messages.getString("turnExtra"));
+            int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
+            fields.getFields(extraRollResult);
+            player.getAccount().deposit(extraRollResult, extraEffectAmount, specialFieldResult);
+            System.out.println(messages.getString("bankUpdate") + " " + player.getAccount().getBalance());
         }
     }
 }
