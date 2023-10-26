@@ -7,11 +7,11 @@ public class Fields {
     private ResourceBundle messages;
 
     public Fields() {
-        // Default to English in case of no choice provided
+        // Define message for the field messages
         messages = ResourceBundle.getBundle("messages", new Locale("en", "US"));
         messages = ResourceBundle.getBundle("messages", new Locale("da", "DK"));
     }
-
+//This will print the field text depending on the dice roll result
     public int getFields(int rollResult) {
         switch (rollResult)  {
             case 2: 

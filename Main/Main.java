@@ -22,7 +22,7 @@ public class Main {
         System.out.print("Enter 2 for English or 1 for Danish: ");
 
         int choice = scanner.nextInt();
-
+        
         if (choice == 1) {
             messages = ResourceBundle.getBundle("messages_da_DK");
         } else if (choice == 2) {
