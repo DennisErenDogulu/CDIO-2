@@ -47,7 +47,7 @@ public class Main {
 
         if (answer.equalsIgnoreCase(messages.getString("answerToLang"))) {
            
-           
+           System.out.println(messages.getString("startBalance"));
             
             // This loop will run until there is one player with 3000 points
 
