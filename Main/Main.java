@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ResourceBundle messages = null; // Initialize messages to work in scopw
+        ResourceBundle messages = null; // Initialize messages to work in scope for entire main method
 
         // Initialize players, dice, and game elements
         Player player1 = new Player("Player 1", 1000);
@@ -23,13 +23,6 @@ public class Main {
 
         int choice = scanner.nextInt();
 
-        // Get the number of sides for the dice
-        System.out.println("Enter the number of sides for the dice: ");
-        int sides = scanner.nextInt();
-        Dice dice = new Dice(sides);
-
-        scanner.nextLine(); // Consume newline
-
         if (choice == 1) {
             messages = ResourceBundle.getBundle("messages_da_DK");
         } else if (choice == 2) {
@@ -39,13 +32,20 @@ public class Main {
             return;
         }
 
+        // Get the number of sides for the dice
+        System.out.println(messages.getString("diceNum"));
+        int sides = scanner.nextInt();
+        Dice dice = new Dice(sides);
+
+        scanner.nextLine(); // Consume newline
+
         // Welcome message and game start confirmation
         System.out.println(messages.getString("welcomeMessage"));
         String answer = scanner.nextLine();
 
         if (answer.equalsIgnoreCase(messages.getString("answerToLang"))) {
             // This loop will run until there is one player with 3000 points
-            while (player1.getAccount().getBalance() < 3000 && player2.getAccount().getBalance() < 3000) {
+            while (player1.getAccount().getBalance() <= 3000 && player2.getAccount().getBalance() <= 3000) {
                 // Player 1's turn
                 System.out.println("______________");
                 System.out.println(messages.getString("player1Turn"));
