@@ -24,10 +24,10 @@ public class Main {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-            messages = ResourceBundle.getBundle("messages_en_US");
+            messages = ResourceBundle.getBundle("resources.messages_en_US");
             fields = new Fields(messages);
         } else if (choice == 2) {
-            messages = ResourceBundle.getBundle("messages_da_DK");
+            messages = ResourceBundle.getBundle("resources.messages_da_DK");
             fields = new Fields(messages);
         } else {
             System.out.println("Invalid language choice.");
