@@ -1,6 +1,6 @@
 package Main;
 
-    public class Account {
+public class Account {
     private int balance;
     Dicevalues roll = new Dicevalues();
     FieldEffects fieldEffects = new FieldEffects();
@@ -29,7 +29,7 @@ package Main;
         balance = Math.max(0, newBalance);
     }
     
-    }
+}
     
     
 
